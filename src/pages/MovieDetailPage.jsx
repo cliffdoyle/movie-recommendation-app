@@ -35,7 +35,7 @@ const MovieDetailPage = () => {
         let combinedData = { ...tmdbData };
 
         if (tmdbData.imdb_id && OMDB_API_KEY) {
-          const omdbUrl = `http://www.omdbapi.com/?i=${tmdbData.imdb_id}&apikey=${OMDB_API_KEY}`;
+          const omdbUrl = `https://www.omdbapi.com/?i=${tmdbData.imdb_id}&apikey=${OMDB_API_KEY}`;
           const omdbResponse = await fetch(omdbUrl);
           
           if (omdbResponse.ok) { // Check if the OMDB fetch was successful
