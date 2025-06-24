@@ -41,4 +41,13 @@ export const watchlistService = {
   
   // Expose the getter for use in other components
   getMovies: getWatchlist, 
+   toggleWatchedStatus: (movieId) => {
+    let watchlist = getWatchlist();
+    const movieIndex = watchlist.findIndex(item => item.id === movieId);
+    if (movieIndex > -1) {
+      // Toggle the 'watched' property, or set it to true if it doesn't exist
+      watchlist[movieIndex].watched = !watchlist[movieIndex].watched;
+      saveWatchlist(watchlist);
+    }
+  },
 };
