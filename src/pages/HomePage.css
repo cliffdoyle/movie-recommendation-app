@@ -1,0 +1,25 @@
+/* src/pages/HomePage.css */
+.home-page {
+  padding: 20px;
+}
+
+.home-page h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.movie-grid {
+  display: grid;
+  /* This creates responsive columns. They will be at least 200px wide. */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+.status-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  font-size: 1.5rem;
+}
