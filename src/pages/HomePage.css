@@ -23,3 +23,33 @@
   height: 80vh;
   font-size: 1.5rem;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 40px 0;
+  color: white;
+}
+
+.pagination button {
+  padding: 10px 20px;
+  background-color: #01b4e4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #0d8caa;
+}
+
+.pagination button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
