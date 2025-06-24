@@ -1,9 +1,14 @@
+import { Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 
 function App(){
   return (
     <div className="App">
-      <HomePage/>
+      <Routes>
+        <Route path="/" element={<HomePage/>}/>
+        <Route path="/movie/:movieId" element={<MovieDetailPage/>}/>
+      </Routes>
+      
     </div>
   )
 }

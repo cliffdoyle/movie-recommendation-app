@@ -1,7 +1,9 @@
 import React from 'react';
 import './MovieCard.css';
 
-const MovieCard = ({title, posterPath, releaseDate})=>{
+
+//We need the movie ID to build the link
+const MovieCard = ({id,title, posterPath, releaseDate})=>{
    //TMDB gives a 'poster_path'
 
    const imageUrl = posterPath
@@ -14,6 +16,9 @@ const MovieCard = ({title, posterPath, releaseDate})=>{
     
 
     return (
+
+        //Wrap the card in a Link component
+        <Link to={`/movie/${id}`} className="movie-card-link">
         <div className='movie-card'>
             <img src={imageUrl} alt={`Poster for ${title}`}/>
             <div className='movie-card-info'>
@@ -21,6 +26,7 @@ const MovieCard = ({title, posterPath, releaseDate})=>{
                 <p>{year}</p>
             </div>
         </div>
+        </Link>
     );
 
 };
