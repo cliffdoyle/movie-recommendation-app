@@ -58,3 +58,24 @@ h2 {
     height: auto;
   }
 }
+
+
+
+.watchlist-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #01b4e4;
+  color: white;
+  transition: background-color 0.2s;
+}
+
+.watchlist-button:hover {
+  background-color: #0d8caa;
+}

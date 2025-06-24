@@ -1,0 +1,59 @@
+/* src/pages/WatchlistPage.css */
+.watchlist-page {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.watchlist-page h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.empty-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-top: 50px;
+}
+
+/* This is a wrapper around our existing MovieCard to add the button underneath */
+.watchlist-item-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.remove-button {
+  background-color: #e50914; /* Netflix Red */
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.remove-button:hover {
+  background-color: #f40612;
+}
+
+.movie-watched .movie-card {
+  opacity: 0.6;
+  border: 2px solid #01b4e4;
+}
+
+.button-group {
+  display: flex;
+}
+
+.watched-button {
+  flex-grow: 1; /* Make buttons share space */
+  background-color: #4CAF50; /* Green */
+  /* other button styles */
+}
+
+/* We reuse the movie-grid styles, so we don't need to redefine them! */

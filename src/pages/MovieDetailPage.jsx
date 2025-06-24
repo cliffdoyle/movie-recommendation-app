@@ -1,6 +1,7 @@
 // src/pages/MovieDetailPage.jsx
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { watchlistService } from '../services/watchlistService';
 import './MovieDetailPage.css';
 
 const MovieDetailPage = () => {
@@ -8,6 +9,12 @@ const MovieDetailPage = () => {
   const [details, setDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+   // --- 2. Add new state to track if the movie is in the watchlist ---
+  const [isInWatchlist, setIsInWatchlist] = useState(
+    // Initialize state directly from our service
+    watchlistService.isMovieInWatchlist(parseInt(movieId))
+  );
 
   const TMDB_API_KEY = `Bearer ${import.meta.env.VITE_TMDB_API_KEY}`;
   const OMDB_API_KEY = import.meta.env.VITE_OMDB_API_KEY;
@@ -54,6 +61,28 @@ const MovieDetailPage = () => {
     fetchDetails();
   }, [movieId]);
 
+    // --- 3. Add event handlers for the button ---
+  const handleToggleWatchlist = () => {
+    if (!details) return; // Don't do anything if details haven't loaded
+
+    // Create a simplified movie object to save. We don't need all the details.
+    const movieDataToSave = {
+      id: details.id,
+      title: details.title,
+      poster_path: details.poster_path,
+      release_date: details.release_date,
+    };
+    
+    if (isInWatchlist) {
+      watchlistService.removeMovie(details.id);
+      setIsInWatchlist(false);
+    } else {
+      watchlistService.addMovie(movieDataToSave);
+      setIsInWatchlist(true);
+    }
+  };
+
+
   if (loading) return <div className="status-message"><p>Loading details...</p></div>;
   if (error) return <div className="status-message"><p>Error: {error}</p></div>;
   if (!details) return null;
@@ -72,6 +101,9 @@ const MovieDetailPage = () => {
       <div className="detail-content">
         <img src={posterUrl} alt={details.title} className="detail-poster" />
         <div className="detail-info">
+               <button onClick={handleToggleWatchlist} className="watchlist-button">
+                    {isInWatchlist ? 'Remove from Watchlist' : 'Add to Watchlist'}
+               </button>
           <h1>{details.title} {year}</h1>
           <p className="tagline">{details.tagline}</p>
           
