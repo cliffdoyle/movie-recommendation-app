@@ -1,42 +1,24 @@
-import React, {useState,useEFfect} from 'react';
+import React from 'react';
 import './MovieCard.css';
 
-const MovieCard = ({movie})=>{
-    const [posterUrl, setPOsterUrl]=useState('')
+const MovieCard = ({title, posterPath, releaseDate})=>{
+   //TMDB gives a 'poster_path'
 
-    useEFfect(()=>{
-        const fetchPoster =async () => {
-            const TMDB_API_KEY = import.meta.env.VITE_TMDB_API_KEY;
-            const API_URL = `${import.meta.env.VITE_TMDB_BASE_URL}/trending/movie/week`;
+   const imageUrl = posterPath
+   ?`https://image.tmdb.org/t/p/w500${posterPath}`
+   :'https://via.placeholder.com/500x750.png?text=No+Image';
 
-            try{
-                const response = await fetch(API_URL);
-                const data=await response.json();
+   //Extract the year from the release_date (e.g., "2023-10-25")
+   const year = releaseDate ? releaseDate.substring(0,4) : 'N/A';
 
-                if (data.Poster && data.Poster !=='N/A'){
-                    setPOsterUrl(data.Poster);
-                }else{
-                    // Use a placeholder if no poster is found
-                    setPosterUrl('https://via.placeholder.com/200x300.png?text=No+Image');
-                }
-            }catch (error){
-             console.error("Failed to fetch poster from TMDB", error);
-                setPosterUrl('https://via.placeholder.com/200x300.png?text=Error');
-            }
-
-
-        };
-        if (movie.ids.imdb){
-            fetchPoster();
-        }
-    },[movie.ids.imdb]);
+    
 
     return (
         <div className='movie-card'>
-            <img src={posterUrl} alt={movie.title}/>
+            <img src={imageUrl} alt={`Poster for ${title}`}/>
             <div className='movie-card-info'>
-                <h3>{movie.title}</h3>
-                <p>{movie.year}</p>
+                <h3>{title}</h3>
+                <p>{year}</p>
             </div>
         </div>
     );

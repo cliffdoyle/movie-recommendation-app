@@ -24,8 +24,10 @@ const HomePage = () => {
                 const API_KEY= import.meta.env.VITE_TMDB_API_KEY;
 
                 const response = await fetch(API_URL, {
+                    method: 'GET',
                     headers: {
-                        Authorization:API_KEY,
+                        //We construct the "Bearer" token here
+                        Authorization:`Bearer ${API_KEY}`,
                         'Content-Type':'application/json',
                     }
 
@@ -44,7 +46,7 @@ const HomePage = () => {
                 setLoading(false);
             }
         };
-        fetchTrendingMovies
+        fetchTrendingMovies()
         //Empty array means this effect runs only once
     },[])
 
@@ -63,8 +65,10 @@ const HomePage = () => {
             <div className='movie-grid'>
                 {movies.map(movie=>(
                     <MovieCard
-                    key={movie.ids.imdb}
-                    movie={movie}
+                    key={movie.id}
+                    title={movie.title}
+                    posterPath={movie.poster_path}
+                    releaseDate={movie.release_date}
                     />
                 ))}
             </div>
