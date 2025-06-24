@@ -23,7 +23,7 @@ const HomePage = () => {
 
                 const API_KEY= import.meta.env.VITE_TMDB_API_KEY;
 
-                const response = await fetch(url, {
+                const response = await fetch(API_URL, {
                     headers: {
                         Authorization:API_KEY,
                         'Content-Type':'application/json',
