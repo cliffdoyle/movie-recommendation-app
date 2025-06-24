@@ -1,5 +1,7 @@
 # Movie Discovery Web App
 
+[![View Live Site](https://img.shields.io/badge/View_Live_Site-0070f3?style=for-the-badge&logo=vercel&logoColor=white)](https://movie-recommendation-app-five-lovat.vercel.app/)
+
 A comprehensive entertainment discovery platform built with React, Vite, and multiple movie database APIs. This application allows users to search for movies and TV shows, view detailed information, manage a personal watchlist, and discover trending content.
 
 
@@ -17,6 +19,13 @@ A comprehensive entertainment discovery platform built with React, Vite, and mul
 - [Screenshots](#screenshots)
 
 ---
+
+
+## Live Demo
+
+This project is deployed and hosted on Vercel. You can access the live version of the application by clicking the link below:
+
+**[https://movie-recommendation-app-five-lovat.vercel.app/](https://movie-recommendation-app-five-lovat.vercel.app/)**
 
 ## Features
 
